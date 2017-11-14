@@ -40,6 +40,7 @@ gem 'carrierwave'
 gem 'aws-sdk', '~> 2.3'
 gem "mini_magick"
 gem 'fog'
+gem 'figaro'
 
 
 gem 'kaminari'
