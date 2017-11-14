@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p class="panel-title"><%= @post.title %></p>
+		<%= @post.user.username %> <em>Posted at: <%= @post.created_at.strftime('%d %b %Y at %I:%M %p') %></em>
+	</div>
+
+	<div class="panel-body">
+		<%= image_tag @post.user.avatar.url, class: "avatar" %>
+		<h4><%= @post.user.username %></h4>
+		 <%= image_tag @post.image_url.to_s %>
+		<%= @post.blog_entry.html_safe %>
+	</div>
+
+	
+	<div class="panel-footer">
+		<button class="btn btn-warning"><%= link_to 'Edit', edit_post_path(@post) %></button>
+		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div id="comments">
+			<%= render'comments/form', comment: @comment %>
+			<% @post.comments.each do |comment| %>
+				<div class="well"
+					<p><strong><%= image_tag comment.user.avatar.url, class: "icon" %><%= comment.user.username %></strong> said: <br/>
+					</strong> said at <%= comment.created_at.strftime('%d %b %Y at %I:%M %p') %>:</p>
+					<p><%= comment.comment_entry %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

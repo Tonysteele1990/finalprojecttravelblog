@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>All posts by <%= @user.username %></h1>
+
+
+
+<div class="row">
+    <% @user.posts.each do |post| %>
+      <div class="col-md-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4><%= link_to post.title, post %></h4>
+            <p><%= post.user.username %>  <em>Posted at: <%= post.created_at.strftime('%d %b %Y at %I:%M %p') %></em></p></p>
+          </div>
+          <div class="panel-body">
+            <%= post.blog_entry[0..100] %> (<%= link_to "Read More", post %>)
+          </div>
+          <div class="panel-footer">
+            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-info" %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+   
+</div>

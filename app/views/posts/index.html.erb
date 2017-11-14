@@ -1,0 +1,122 @@
+<p id="notice"><%= notice %></p>
+
+<header class="header" role="banner">
+  <center>
+    <img src="https://mykidlovesbroccoli.files.wordpress.com/2015/03/where-to-next-sign.jpg" width="1100" height="425">
+  </center>
+  </header>
+
+<p>
+  
+</p>
+
+    <div class="container">
+    <!-- <div class="pull-right"> -->
+        <div class="row">
+          <div class="col-sm-12">
+          <center>
+            <div id="my-slider" class="carousel slide" data-ride="carousel">
+                <!-- indicators dot nov -->
+                <ol class="carousel-indicators">
+                  <li data-target="#my-slider" data-slide-to="0" class="active"></li>
+                  <li data-target="#my-slider" data-slide-to="1"></li>
+                  <li data-target="#my-slider" data-slide-to="2"></li>
+                  <li data-target="#my-slider" data-slide-to="3"></li>
+                  <li data-target="#my-slider" data-slide-to="4"></li>
+                  <li data-target="#my-slider" data-slide-to="5"></li>
+                  <li data-target="#my-slider" data-slide-to="6"></li>
+                </ol>
+
+                <!-- wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                      <img src="https://siroccoverland.files.wordpress.com/2014/02/otways-6.jpg?w=1484&h=834"/>
+                      <div class="carousel-caption">
+                      <h4>Australia</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="https://media.cntraveler.com/photos/592462096af5d360c3ac77bc/master/w_1024,c_limit/GettyImages-93299393.jpg"/>
+                      <div class="carousel-caption">
+                      <h4>France</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="http://static1.squarespace.com/static/55c48e13e4b09e7cf2404af2/56d9b0e4b6aa60744e4321db/56d9ddb860b5e99884df0142/1457118962499/?format=1000w"/>
+                      <div class="carousel-caption">
+                      <h4>Russia</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="https://www.airtransat.com/getmedia/a3652ee2-5b50-4b17-b35d-d76f5d2862b3/Costa-Rica01.jpg?width=980.jpg"/>
+                      <div class="carousel-caption">
+                      <h4>Costa Rica</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="https://fthmb.tqn.com/1x_5avTe_KqV6wkXZ6ZIygsqRcQ=/960x0/filters:no_upscale()/88786323-56a3b0fc5f9b58b7d0d331f2.jpg"/>
+                      <div class="carousel-caption">
+                      <h4>Greece</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="http://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/1f/fy/p01ffyz3.jpg"/>
+                      <div class="carousel-caption">
+                      <h4>Turkey</h4>
+                      </div>
+                  </div>
+
+                  <div class="item">
+                      <img src="https://az616578.vo.msecnd.net/files/2016/06/18/636018720314907846447253188_florence,%20italy.jpg"/>
+                      <div class="carousel-caption">
+                      <h4>Italy</h4>
+                      </div>
+                  </div>
+
+                <!-- controls or next and prev buttons -->
+                  <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  </a>
+
+                  <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  </a>
+                </div>
+            </div>
+            </center>
+          </div>
+        </div>
+      </div>
+<br />
+<br />
+<!-- <h1>Posts</h1> -->
+
+<div class="row">
+    <% @posts.each do |post| %>
+
+      <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+          
+          <div class="panel-heading">
+            <h4><%= link_to post.title, post %></h4>
+            <p><%= link_to post.user.username, user_posts_path(name: post.user.username)  %><em>Posted at: <%= post.created_at.strftime('%d %b %Y at %I:%M %p') %></em></p></p>
+          </div>
+          <div class="panel-body">
+            <%= image_tag post.image_url.to_s %>
+            <%= post.blog_entry[0..100] %> (<%= link_to "Read More", post %>)
+          </div>
+          <div class="panel-footer">
+            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-info" %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <!-- <%= paginate @posts %> -->
+
+</div>
